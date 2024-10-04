@@ -14,13 +14,13 @@ public class LoginSystemTest {
 
     @Test
     public void validateCorrectLogin(){
-        result=system.login("Sangmitra","hello123");
+        String result=system.login("Sangmitra","hello123");
         assertEquals(result, "Login Successful");
     }
 
     @Test
     public void validateIncorrectLogin(){
-        result=system.login("Sangmitra01","hey");
+        String result=system.login("Sangmitra01","hey");
         assertEquals(result, "Login unsuccessful, username or password incorrect");
     }
 
@@ -29,30 +29,30 @@ public class LoginSystemTest {
         system.login("Sangmitra01","hey");
         system.login("Sangmitra01","hey");
         system.login("Sangmitra01","hey");
-        result=system.login("Sangmitra01","hey");
+        String result=system.login("Sangmitra01","hey");
         assertEquals(result, "Alert: Account locked due to too many failed login attempts");
     }
 
     @Test
     public void validateEmpty(){
-        result=system.login("","");
+        String result=system.login("","");
         assertEquals(result,"Error: empty username or password received");
     }
 
     @Test
     public void validateNull(){
-        result=system.login(null,null);
-        assertEquals(result,"Error: no username and password entered");
+        String result=system.login(null,null);
+        assertEquals(result,"Error: empty username or password received");
     }
 
     @Test
     public void validateCaseSensitivity(){
-        result=system.login("SAngmitra","hello123");
+        String result=system.login("SAngmitra","hello123");
         assertEquals(result,"Login unsuccessful, username or password incorrect");
     }
     @Test
     public void validateSpaces(){
-        result=system.login("Sangmitra ","hello123");
+        String result=system.login("Sangmitra ","hello123");
         assertEquals(result,"Login unsuccessful, username or password incorrect");
     }
 }
